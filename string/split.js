@@ -6,18 +6,18 @@
  */
 const split = (value, from, fill) => {
 	if (typeof value === 'number' || typeof value === 'string') {
-		const text = value.toString();
+		const text = [...value.toString()].reverse().join('');
 		const count = typeof from === 'number' ? from : 3;
 		const replaceText = typeof fill === 'string' ? fill : ' ';
 		const array = [];
 		for (let x = 0; x < text.length; x += count) {
-			array.push(text.slice(x, x + count));
+			array.push([...text.slice(x, x + count)].reverse().join(''));
 		}
-		return array.join().replace(/,/g, replaceText);
+		return array.reverse().join().replace(/,/g, replaceText);
 	} else {
 		return '';
 	}
 };
-split('javascript'); // jav asc rip t
-split(1234567890, 4, '-'); // 1234-5678-90
-split('Hello world', 2, '__'); // He__ll__o __wo__rl__d
+split('javascript'); // j ava scr ipt
+split(1234567890, 4, '-'); // 12-3456-7890
+split('Hello world', 2, '--'); // H--el--lo-- w--or--ld
