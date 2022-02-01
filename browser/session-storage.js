@@ -5,7 +5,7 @@ const sessionStorage = () => {
 	 */
 	const get = keys =>
 		Array.isArray(keys)
-			? keys.reduce((item, key) => {
+			? keys?.reduce((item, key) => {
 					item[key] = sessionStorage.getItem(key);
 					return item;
 			  }, {})
@@ -16,7 +16,7 @@ const sessionStorage = () => {
 	 */
 	const set = keys => {
 		if (Array.isArray(keys)) {
-			keys.forEach(key => {
+			keys?.forEach(key => {
 				sessionStorage.setItem(key?.name, key?.value);
 			});
 		}
@@ -27,7 +27,7 @@ const sessionStorage = () => {
 	 */
 	const remove = keys => {
 		if (Array.isArray(keys)) {
-			keys.forEach(key => {
+			keys?.forEach(key => {
 				window.sessionStorage.removeItem(key);
 			});
 		}
