@@ -1,9 +1,12 @@
+/**
+ * @return {object}
+ */
 const localStorage = () => {
 	/**
 	 * @param {array} keys
 	 * @return {object}
 	 */
-	const get = keys =>
+	const getData = keys =>
 		Array.isArray(keys)
 			? keys?.reduce((item, key) => {
 					item[key] = localStorage.getItem(key);
@@ -14,10 +17,10 @@ const localStorage = () => {
 	 * @param {array} keys
 	 * @return {void}
 	 */
-	const set = keys => {
+	const setData = keys => {
 		if (Array.isArray(keys)) {
-			keys?.forEach(key => {
-				localStorage.setItem(key?.name, key?.value);
+			keys?.forEach(({ name, value }) => {
+				localStorage.setItem(name, value);
 			});
 		}
 	};
@@ -25,7 +28,7 @@ const localStorage = () => {
 	 * @param {array} keys
 	 * @return {void}
 	 */
-	const remove = keys => {
+	const removeData = keys => {
 		if (Array.isArray(keys)) {
 			keys?.forEach(key => {
 				localStorage.removeItem(key);
@@ -35,6 +38,6 @@ const localStorage = () => {
 	/**
 	 * @return {void}
 	 */
-	const clear = () => localStorage.clear();
-	return { get, set, remove, clear };
+	const clearData = () => localStorage.clear();
+	return { getData, setData, removeData, clearData };
 };

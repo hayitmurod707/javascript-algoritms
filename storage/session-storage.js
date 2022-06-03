@@ -1,9 +1,12 @@
+/**
+ * @return {object}
+ */
 const sessionStorage = () => {
 	/**
 	 * @param {array} keys
 	 * @return {object}
 	 */
-	const get = keys =>
+	const getData = keys =>
 		Array.isArray(keys)
 			? keys?.reduce((item, key) => {
 					item[key] = sessionStorage.getItem(key);
@@ -14,10 +17,10 @@ const sessionStorage = () => {
 	 * @param {array} keys
 	 * @return {void}
 	 */
-	const set = keys => {
+	const setData = keys => {
 		if (Array.isArray(keys)) {
-			keys?.forEach(key => {
-				sessionStorage.setItem(key?.name, key?.value);
+			keys?.forEach(({ name, value }) => {
+				sessionStorage.setItem(name, value);
 			});
 		}
 	};
@@ -25,7 +28,7 @@ const sessionStorage = () => {
 	 * @param {array} keys
 	 * @return {void}
 	 */
-	const remove = keys => {
+	const removeData = keys => {
 		if (Array.isArray(keys)) {
 			keys?.forEach(key => {
 				window.sessionStorage.removeItem(key);
@@ -35,6 +38,6 @@ const sessionStorage = () => {
 	/**
 	 * @return {void}
 	 */
-	const clear = () => sessionStorage.clear();
-	return { get, set, remove, clear };
+	const clearData = () => sessionStorage.clear();
+	return { getData, setData, removeData, clearData };
 };
