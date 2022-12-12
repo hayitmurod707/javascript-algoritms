@@ -2,7 +2,7 @@
  * @param {array} array
  * @return {array}
  */
-const shuffleArray = array => {
+const shuffle = array => {
 	let maxSize = array.length;
 	const newArray = [];
 	let prevArray = [...array];
@@ -14,3 +14,4 @@ const shuffleArray = array => {
 	}
 	return newArray;
 };
+export default shuffle;
