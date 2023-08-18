@@ -6,7 +6,7 @@ const set = keys => {
 	if (process.browser) {
 		const data = Array.isArray(keys) ? keys : [];
 		data.forEach(({ name, value }) => {
-			window.sessionStorage.setItem(name, value);
+			window.localStorage.setItem(name, value);
 		});
 	} else {
 		console.warn("Environment is not browser");
